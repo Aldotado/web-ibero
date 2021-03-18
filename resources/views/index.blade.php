@@ -50,6 +50,23 @@
 					<option value="Asistencia Externa">Asistencia Externa</option>
 				</select>
 			</div>
+
+			<!-- Este método usa más recursos (es menos óptima)-->
+			{{--
+			@php
+				$proyectos = \App\Models\Proyect::all();
+			@endphp
+			--}} 
+
+			<div class="form-group mb-3">
+				<label>Proyectos</label>
+				<select class="form-control" name="project_id">
+					@foreach($proyectos as $proyecto)
+						<option value="{{ $proyecto->id }}">{{ $proyecto->name }}</option>
+					@endforeach
+				</select>
+			</div>
+
 			<div class="form-group mb-3">
 				<label>Fecha de entrega</label>
 				<input class="form-control" type="date" name="due_date">
@@ -156,6 +173,15 @@
 				<option value="Por Equipo">Por Equipo</option>
 				<option value="Parejas">Parejas</option>
 				<option value="Asistencia Externa">Asistencia Externa</option>
+			</select>
+		</div>
+
+		<div class="form-group mb-3">
+			<label>Proyectos</label>
+			<select class="form-control" name="project_id">
+				@foreach($proyectos as $proyecto)
+					<option value="{{ $proyecto->id }}">{{ $proyecto->name }}</option>
+				@endforeach
 			</select>
 		</div>
 		

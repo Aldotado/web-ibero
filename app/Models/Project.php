@@ -11,6 +11,20 @@ class Project extends Model
     protected $fillable = [
         'name', 'description', 'final_date', 'hex'
     ];
+
+    public function tareas()
+    {						 /*'App\Models\Task'*/
+    	return $this->hasMany(Task::class); 
+    }
+
+
+
+    /*
+    hasMany (uno a muchos) El modelo que tiene muchos registros vinculados
+    belongsTo (Pertenece a) El modelo que debe vincularse a su padre
+    hasOne (uno a uno)
+	belongsToMany (Muchos a Muchos)*/
+
 }
 
 
