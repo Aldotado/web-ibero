@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
 
@@ -30,6 +30,7 @@
 	        
 	      	<!-- Nuestro campo de protección de formulario -->
 			{{ csrf_field() }}
+			<!--<input type="hidden" name="user_id" value="{{ Auth::user()->id }}"> -->
 
 			<!-- Campos de formulario -->
 			<div class="form-group mb-3">

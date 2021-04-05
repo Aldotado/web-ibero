@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Models\Project;
 use Illuminate\Http\Request;
 
@@ -14,9 +15,22 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $proyectos = Project::all();
+        $proyectos = Project::where('user_id', Auth::user()->id)
+        ->orderBy('created_at', 'desc')
+        ->get();
 
         return view('projects.index')->with('proyectos', $proyectos);
+    }
+
+    /*public function filtro(Request $request){
+        $proyectos = Project::where('user_id', Auth::user()->id)
+        ->where('hex', $request->hex)
+        ->get();
+    }*/
+
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
 
     /**
@@ -38,6 +52,7 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         $proyecto = Project::create([
+            'user_id' => Auth::user()->id ,
             'name' => $request->name ,
             'description' => $request->description ,
             'final_date' => $request->final_date,
@@ -85,6 +100,7 @@ class ProjectController extends Controller
         $proyecto = Project::find($id);
 
         $proyecto->update([
+            'user_id' => Auth::user()->id ,
             'name' => $request->name ,
             'description' => $request->description ,
             'final_date' => $request->final_date,
