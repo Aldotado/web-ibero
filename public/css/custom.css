@@ -1,4 +1,9 @@
-body{
-    background-color: blue;
-    color: #fff;
+.btn-primary{
+	background-color: red;
+	border:none;
+}
+
+.btn-primary:hover{
+	background-color: green;
+	border:none;
 }

@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title></title>
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
 	<!-- <form method="POST" action="{{ route('tareas.update', $tarea->id) }}">
